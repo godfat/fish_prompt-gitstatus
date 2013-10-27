@@ -1,4 +1,6 @@
 # name: GitStatus
+# Find latest version from: https://github.com/godfat/fish_prompt-gitstatus
+
 function _git_branch_name
   echo (command git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')
 end
