@@ -29,7 +29,12 @@ function fish_prompt
   set -l cyan (set_color cyan)
   set -l normal (set_color normal)
   set -l cwd (set_color $fish_color_cwd)(prompt_pwd)
+  set -l git_status (_git_status_symbol)(_git_branch_name)
+
+  if test -n "$git_status"
+    set git_status " $git_status"
+  end
 
   echo -n (_remote_hostname) \
-          $cwd $cyan(_git_status_symbol)(_git_branch_name)$normal'> '
+          $cwd$cyan$git_status$normal'> '
 end
